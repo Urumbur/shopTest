@@ -1,12 +1,14 @@
 import { createContext, useReducer, useMemo } from 'react';
 import { shopCartReducer } from '../reducer/reducer';
 
-export const ShopContext = createContext(null);
+const initialState = {cart: []};
+
+export const ShopContext = createContext(initialState);
 
 
 export const ShopContextProvider = ({children}) => {
   
-  const [store, dispatch] = useReducer(shopCartReducer, {cart: []});
+  const [store, dispatch] = useReducer(shopCartReducer, initialState);
   const values = useMemo(() => ({
     store, 
     dispatch
