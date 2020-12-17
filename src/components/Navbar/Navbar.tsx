@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { Button } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
-import { ShopContext } from '../../context/shopContext';
+import { useStore } from '../../context/shopContext';
 
 const Navbar = () => {
-    const {store} = useContext(ShopContext);
+    const {store} = useStore();
     return(
         <div className="navbar">
             <Link className="button" to="/"><Button variant="outlined">Products</Button></Link>

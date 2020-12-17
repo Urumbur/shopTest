@@ -1,9 +1,19 @@
-import React, {createContext, useReducer, useMemo} from 'react';
+import React, {createContext, useReducer, useMemo, useContext} from 'react';
 import { shopCartReducer } from '../reducer/reducer';
 
 const initialState = {cart: []};
 
-export const ShopContext = createContext(initialState);
+type StoreType = {
+  store: typeof initialState
+}
+
+export const ShopContext = createContext<StoreType | undefined>(undefined);
+
+export const useStore = (): StoreType & {dispatch: any} => {
+  const store = useContext<StoreType | undefined>(ShopContext);
+  //@ts-ignore
+  return store;
+}
 
 export const ShopContextProvider = ({ children }: JSX.ElementChildrenAttribute): JSX.Element => {
   
