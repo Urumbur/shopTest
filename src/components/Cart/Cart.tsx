@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {Button} from "@material-ui/core";
-import {AddShoppingCart} from "@material-ui/icons";
+import { Button } from "@material-ui/core";
+import { AddShoppingCart } from "@material-ui/icons";
 
 const Cart = () => {
     return (

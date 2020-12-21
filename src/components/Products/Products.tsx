@@ -1,14 +1,14 @@
 import React from 'react';
 
 import shopProducts from '../../database/shop-products.json';
-import {useStore} from '../../context/shopContext';
-import { addCart } from '../../reducer/action';
+import { useStore } from '../../context/shopContext';
+import { addToCart } from '../../reducer/action';
 import { Button } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 
 const Product = () => {
     const productList = shopProducts.products.phones;
-    const {dispatch} = useStore();
+    const { dispatch } = useStore();
     return (
         <div>
             <ul className="list">
@@ -16,7 +16,7 @@ const Product = () => {
                     return (
                         <li className="list-item" key={product.id}>
                             {product.name}
-                            <Button variant="outlined" onClick={() => dispatch(addCart(product))}><AddShoppingCart /></Button>
+                            <Button variant="outlined" onClick={() => dispatch(addToCart(product))}><AddShoppingCart /></Button>
                         </li>
                     )
                 })}
