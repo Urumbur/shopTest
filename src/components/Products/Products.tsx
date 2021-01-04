@@ -16,7 +16,9 @@ const Product = () => {
                     return (
                         <li className="list-item" key={product.id}>
                             {product.name}
-                            <Button variant="outlined" onClick={() => dispatch(addToCart(product))}><AddShoppingCart /></Button>
+                            <Button variant="outlined" onClick={() => dispatch(addToCart(product))}>
+                                <AddShoppingCart />
+                            </Button>
                         </li>
                     )
                 })}

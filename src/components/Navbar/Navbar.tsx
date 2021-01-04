@@ -10,7 +10,12 @@ const Navbar = () => {
     return(
         <div className="navbar">
             <Link className="button" to="/"><Button variant="outlined">Products</Button></Link>
-            <Link className="button" to="/cart"><Button variant="outlined"><ShoppingCart /> ({store.cart.length})</Button></Link>
+            <Link className="button" to="/cart">
+                <Button variant="outlined">
+                    <ShoppingCart />
+                    ({store.cart.length})
+                </Button>
+            </Link>
         </div>
     )
 }
