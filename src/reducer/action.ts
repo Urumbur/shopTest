@@ -5,12 +5,16 @@ export type ProductType = {
   name: string
 }
 
-export const addToCart = (product: ProductType) => ({
-  type: ADD_TO_CART,
-  payload: product
-});
+type AddToCart = {
+  type: typeof ADD_TO_CART,
+  payload: ProductType
+}
 
-export const removeCart = (productId: number) => ({
-  type: REMOVE_FROM_CART,
-  payload: productId
-})
+type RemoveFromCart = {
+  type: typeof REMOVE_FROM_CART,
+  payload: number
+}
+
+export type ShopAction =
+  | AddToCart
+  | RemoveFromCart;

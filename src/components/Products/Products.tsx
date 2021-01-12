@@ -2,7 +2,6 @@ import React from 'react';
 
 import shopProducts from '../../database/shop-products.json';
 import { useStore } from '../../context/shopContext';
-import { addToCart } from '../../reducer/action';
 import { Button } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 
@@ -16,7 +15,7 @@ const Product = () => {
                     return (
                         <li className="list-item" key={product.id}>
                             {product.name}
-                            <Button variant="outlined" onClick={() => dispatch(addToCart(product))}>
+                            <Button variant="outlined" onClick={() => dispatch({type: "ADD_TO_CART", payload: product})}>
                                 <AddShoppingCart />
                             </Button>
                         </li>

@@ -3,7 +3,6 @@ import React from 'react';
 import { Button } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 import { useStore } from "../../context/shopContext";
-import { removeCart } from '../../reducer/action';
 
 const Cart = () => {
 
@@ -12,11 +11,11 @@ const Cart = () => {
     return (
         <div>
             <ul className="list">
-                {store.cart.map((product) => {
+                {store.cart.map((product, index) => {
                     return (
-                        <li className="list-item" key={product.id}>
+                        <li className="list-item" key={index}>
                             {product.name}
-                            <Button variant="outlined" onClick={() => dispatch(removeCart(product.id))}>
+                            <Button variant="outlined" onClick={() => dispatch({type: "REMOVE_FROM_CART", payload: product.id})}>
                                 <Delete />
                             </Button>
                         </li>

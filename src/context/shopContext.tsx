@@ -1,28 +1,33 @@
-import React, {createContext, useReducer, useMemo, useContext, Dispatch} from 'react';
+import React, { createContext, useReducer, useContext, useMemo, Dispatch } from 'react';
 import { shopCartReducer } from '../reducer/reducer';
-import { ProductType } from "../reducer/action";
+import { ProductType, ShopAction } from "../reducer/action";
 
 export type CartType = {
-  cart: ProductType[]
+    cart: ProductType[]
 }
 
-type StoreType = {
-  store: CartType
+export type StoreType = {
+    store: CartType,
+    dispatch: Dispatch<ShopAction>
 }
 
 const initialState: CartType = {cart: []};
 
 export const ShopContext = createContext<StoreType | undefined>(undefined);
 
-export const useStore = (): StoreType & {dispatch: Dispatch<any>} => {
+export const useStore = (): StoreType => {
   const store = useContext<StoreType | undefined>(ShopContext);
-  //@ts-ignore
+  if (!store) {
+      throw new Error(
+          "Cannot use `ShopContext` outside ShopContext.Provider"
+      );
+  }
   return store;
 }
 
-export const ShopContextProvider = ({ children }: JSX.ElementChildrenAttribute): JSX.Element => {
+export const ShopContextProvider = ({children, initial = initialState}: {children: JSX.Element, initial?: CartType}) => {
 
-  const [store, dispatch] = useReducer(shopCartReducer, initialState);
+  const [store, dispatch] = useReducer(shopCartReducer, initial);
 
   const values = useMemo(() => ({
     store,
@@ -30,6 +35,8 @@ export const ShopContextProvider = ({ children }: JSX.ElementChildrenAttribute):
   }), [store])
   
   return (
-    <ShopContext.Provider value={values}> {children} </ShopContext.Provider>
-  )
-}
+    <ShopContext.Provider value={values}>
+        {children}
+    </ShopContext.Provider>
+  );
+};
