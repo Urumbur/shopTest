@@ -11,9 +11,9 @@ type AddToCart = {
   payload: ProductType
 }
 
-export const addToCart = (payload): AddToCart => ({
-  type: typeof ADD_TO_CART,
-  payload: ProductType
+export const addToCart = (payload: ProductType): AddToCart => ({
+  type,
+  payload
 })
 
 type RemoveFromCart = {
