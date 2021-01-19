@@ -4,6 +4,7 @@ import shopProducts from '../../database/shop-products.json';
 import { useStore } from '../../context/shopContext';
 import { Button } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
+import { addToCart } from "../../reducer/actions";
 
 const Product = () => {
     const productList = shopProducts.products.phones;
@@ -15,7 +16,7 @@ const Product = () => {
                     return (
                         <li className="list-item" key={product.id}>
                             {product.name}
-                            <Button variant="outlined" onClick={() => dispatch({type: "ADD_TO_CART", payload: {...product, count: 1})}>
+                            <Button variant="outlined" onClick={() => dispatch(addToCart(payload: {...product, count: 1}))}>
                                 <AddShoppingCart />
                             </Button>
                         </li>
