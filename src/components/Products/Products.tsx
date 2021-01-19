@@ -15,7 +15,7 @@ const Product = () => {
                     return (
                         <li className="list-item" key={product.id}>
                             {product.name}
-                            <Button variant="outlined" onClick={() => dispatch({type: "ADD_TO_CART", payload: product})}>
+                            <Button variant="outlined" onClick={() => dispatch({type: "ADD_TO_CART", payload: {...product, count: 1})}>
                                 <AddShoppingCart />
                             </Button>
                         </li>
