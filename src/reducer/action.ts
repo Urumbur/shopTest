@@ -2,7 +2,8 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from './types';
 
 export type ProductType = {
   id: number,
-  name: string
+  name: string,
+  count: number
 }
 
 type AddToCart = {
