@@ -14,7 +14,7 @@ const Cart = () => {
                 {store.cart.map((product, index) => {
                     return (
                         <li className="list-item" key={index}>
-                            {product.name}
+                            {product.name} - {product.count}
                             <Button variant="outlined" onClick={() => dispatch({type: "REMOVE_FROM_CART", payload: product.id})}>
                                 <Delete />
                             </Button>
