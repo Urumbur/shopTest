@@ -11,6 +11,11 @@ type AddToCart = {
   payload: ProductType
 }
 
+export const addToCart = (payload): AddToCart => ({
+  type: typeof ADD_TO_CART,
+  payload: ProductType
+})
+
 type RemoveFromCart = {
   type: typeof REMOVE_FROM_CART,
   payload: number
